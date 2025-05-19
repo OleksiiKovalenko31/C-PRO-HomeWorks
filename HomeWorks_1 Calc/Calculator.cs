@@ -13,14 +13,8 @@ namespace HomeWorks_1_Calc
 
       public static void operation(decimal number1, decimal number2, string? operation, out decimal result)
       {
-            //if (string.IsNullOrEmpty(operation) || operation != "/" || operation != "*" || operation != "+" || operation != "-")
-            //{
-            //    Visualisator_calc.ShowError("Ошибка ввода. Пожалуйста, введите операцию.");
-            //    result = 0;
-            //    return;
-            //}
-            //else
-            //{
+            if (!string.IsNullOrEmpty(operation) || operation == "/" || operation == "*" || operation == "+" || operation == "-")
+            {
                 switch (operation)
                 {
 
@@ -46,8 +40,8 @@ namespace HomeWorks_1_Calc
                         {
                             Visualisator_calc.ShowError("Ошибка. Деление на ноль невозможно.");
                             result = 0;
-                        return;
-                    }
+                            return;
+                        }
                         result = Divide(number1, number2);
                         break;
 
@@ -56,9 +50,16 @@ namespace HomeWorks_1_Calc
                         break;
                 }
 
-
-            //}
-       }
+            }
+            else
+            {
+                Visualisator_calc.ShowError("Ошибка ввода. Пожалуйста, введите операцию.");
+                Console.ReadLine();
+                result = 0;
+                return;
+               
+            }
+        }
             
 
 
