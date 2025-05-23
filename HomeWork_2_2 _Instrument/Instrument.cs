@@ -8,49 +8,23 @@ namespace HomeWork_2_2__Instrument
 {
     class Instrument
     {
-        //Поля класса
-        //private string name;
-        //private string desc;
-        //private string sound;
-        //private string history;
-
-
-        // Конструктор класса
-        public Instrument(/*string inName, string inDesc, string inSound, string inHistory*/)
+    
+        public void ShowInfo(string Name)
         {
-            //inName = name;
-            //inDesc = desc;
-            //inSound = sound;
-            //inHistory = history;
-        }
-
-        // Свойства класса
-        public string Name { get; set; }
-
-        public string Desc  { get; set; }
-      
-        public string Sound { get; set; }
-
-        public string History { get; set; }
-
-
-        // відображає назву музичного інструменту
-        public void ShowInfo()
-        {
-            Console.WriteLine($"Инструмент: {Name}");
-        }
+            Console.WriteLine($"Инструмент {Name}");
+        }       
         // видає звук музичного інструменту
-        public void ShowSound()
+        public void ShowSound(string Sound)
         {
             Console.WriteLine($"{Sound}");
         }
         //відображає опис музичного інструменту
-        public void ShowHistory()
+        public void ShowHistory(string History)
         {
             Console.WriteLine($"Історія інструменту {History}");
         }
         // відображає опис інструменту
-        public void ShowDesc()
+        public void ShowDesc(string Desc)
         {
             Console.WriteLine($"Опис інструменту {Desc}");
         }
