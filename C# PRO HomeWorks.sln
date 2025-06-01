@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWork_2_3_Structures", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWork_3_Interface_and_Abstract_Klass", "Interface_and_Abstract_Klass\HomeWork_3_Interface_and_Abstract_Klass.csproj", "{862F6BF8-CF4E-4647-8081-763A8551B255}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWork_4_OperatorOverloading", "HomeWork_4_OperatorOverloading\HomeWork_4_OperatorOverloading.csproj", "{A81AAD91-32E0-4E54-B42B-40238362B95B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{862F6BF8-CF4E-4647-8081-763A8551B255}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{862F6BF8-CF4E-4647-8081-763A8551B255}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{862F6BF8-CF4E-4647-8081-763A8551B255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A81AAD91-32E0-4E54-B42B-40238362B95B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A81AAD91-32E0-4E54-B42B-40238362B95B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A81AAD91-32E0-4E54-B42B-40238362B95B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A81AAD91-32E0-4E54-B42B-40238362B95B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
