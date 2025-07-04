@@ -17,13 +17,16 @@ namespace HomeWork_8_Barber
         {
 
 
-            for (int i = 0; i < 3; i++)
-            {
-                Klient klient = new Klient(i);
-            }
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    Klient klient = new Klient(i);
+            //}
+
+            Barber barber = new Barber(1);
+
 
         }
-       internal static void Fibonacсi(int x, int y, int counter)
+        internal static void Fibonacсi(int x, int y, int counter)
         {
 
             int sum;
@@ -100,10 +103,10 @@ namespace HomeWork_8_Barber
 
     internal class Klient
     {
-       Semaphore semaphoreKlient = new Semaphore (1, 3);
-       Semaphore semaphoreBarber = new Semaphore(1, 1);
-       Thread barberThread;
-       Thread klientThread;
+        Semaphore semaphoreKlient = new Semaphore(1, 3);
+        Semaphore semaphoreBarber = new Semaphore(1, 1);
+        Thread barberThread;
+        Thread klientThread;
         int counter = 2;
 
         public Klient(int name)
@@ -138,8 +141,8 @@ namespace HomeWork_8_Barber
             int randomindex = random.Next(0, methods.Length);
             ProcessSimulation = methods[randomindex];
 
-       
-            lock(klientThread); // Очікування доступу до семафора барбера
+
+            lock (klientThread) ; // Очікування доступу до семафора барбера
             {
 
                 Console.WriteLine($"{klientThread.Name}  обслуговується барбером {barberThread.Name}.");
@@ -147,11 +150,76 @@ namespace HomeWork_8_Barber
                 Thread.Sleep(1000); // Симуляція часу обслуговування клієнта
                 Console.WriteLine($"Барбер {barberThread.Name} закінчив обслуговування клієнта {klientThread.Name}.");
             }
-               //counter--;
+            //counter--;
 
 
         }
     }
 
-   
+    internal class Barber
+    {
+        internal Semaphore semaphoreKlient = new Semaphore(1, 3);
+        internal Semaphore semaphoreBarber = new Semaphore(1, 1);
+        Thread klient;
+        private Thread barber;
+        //internal Thread klientThread;
+        private int counter = 2;
+        public Barber(int name)
+        {
+        barber = new Thread(BarberWork);
+            barber.Name = $"Барбер {name}";
+            barber.Start(); // Запуск потоку барбера
+            //klientThread = new Thread(KlientWork);
+            //klientThread.Name = $"Клієнт {name}";
+            //klientThread.Start();
+        }
+
+
+
+        internal void KlientWork()
+        {
+            
+            Console.WriteLine($"{klient.Name} зайшов в барбершоп.");                     
+        }
+        internal void BarberWork() 
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                klient = new Thread(KlientWork);
+                klient.Name = $"Клієнт {i}";
+                klient.Start();
+
+            }
+
+
+
+
+            Action<int, int, int> ProcessSimulation;
+            Action<int, int, int>[] methods = { Program.Fibonacсi, Program.PrimeNumbers, Program.PowerOfNmber };
+            Random random = new Random();
+            int randomindex = random.Next(0, methods.Length);
+
+            ProcessSimulation = methods[randomindex];
+
+            //Console.WriteLine($"{klient.Name} зайшов в барбершоп.");
+            //semaphoreKlient.WaitOne();  // Очікування доступу до семафора клієнта
+          
+            semaphoreKlient.WaitOne();  // Очікування доступу до семафора клієнта
+            //Console.WriteLine($"{klient.Name}  очікує обслуговування.");
+            semaphoreBarber.WaitOne(); // Очікування доступу до семафора барбера
+
+            ProcessSimulation(2, 1, 0); // Виклик методу для обслуговування клієнта
+            semaphoreBarber.Release();
+            semaphoreKlient.Release(); // Звільнення семафора клієнта
+            Console.WriteLine($"Клієнт {klient.Name} залишає барбершоп.");
+
+
+
+            if (!klient.IsAlive) // Перевірка, чи потік клієнта все ще активний
+            {
+                return; // Якщо потік клієнта не запущений, вихід з методу
+            }
+            BarberWork(); // Виклик методу для обслуговування клієнта
+        }
+    }
 }
