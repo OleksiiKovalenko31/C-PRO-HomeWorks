@@ -1,0 +1,24 @@
+﻿@model HomeWork_24_ASP_Net_core_MVC.Models.Note
+
+<h2>Створити замітку</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Назва</label>
+        <input asp-for="Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
+
+    <div>
+        <label>Текст</label>
+        <textarea asp-for="Content"></textarea>
+        <span asp-validation-for="Content"></span>
+    </div>
+
+    <div>
+        <label>Теги (через кому)</label>
+        <input name="tagsInput" />
+    </div>
+
+    <button type="submit">Зберегти</button>
+</form>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<HomeWork_24_ASP_Net_core_MVC.Models.Note>
+
+<h2>Список заміток</h2>
+<a asp-action="Create">Створити нову замітку</a>
+
+<ul>
+@foreach (var note in Model)
+{
+    <li>
+        <a asp-action="Details" asp-route-id="@note.Id">
+            <strong>@note.Title</strong> (Створено: @note.CreatedAt.ToShortDateString())
+        </a>
+        <br />
+        <small>Теги: @string.Join(", ", note.Tags)</small>
+    </li>
+}
+</ul>

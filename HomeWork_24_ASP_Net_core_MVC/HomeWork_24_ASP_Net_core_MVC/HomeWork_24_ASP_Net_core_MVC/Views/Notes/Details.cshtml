@@ -1,0 +1,8 @@
+﻿@model HomeWork_24_ASP_Net_core_MVC.Models.Note
+
+<h2>@Model.Title</h2>
+<p>@Model.Content</p>
+<p><strong>Створено:</strong> @Model.CreatedAt</p>
+<p><strong>Теги:</strong> @string.Join(", ", Model.Tags)</p>
+
+<a asp-action="Index">Назад</a>
